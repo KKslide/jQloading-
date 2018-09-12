@@ -3,14 +3,62 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-<script src="./index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>js文件加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div#loading-box {
+            width: 200px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        span {
+            display: inline-block;
+            height: 30px;
+            background: #abcdef;
+        }
+    </style>
 </head>
 
 <body>
-    <a href="http://www.baidu.com">BaiDu</a>
+
+    <div id="loading-box">
+        <span id="loading"></span>
+    </div>
+    
+    <script>
+        var script_arr = ['http://cdn.bootcss.com/jquery/3.1.0/jquery.slim.js', 'http://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.js', 'http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.slim.min.js'];
+        var nums = script_arr.length;
+        var start = 0;
+        for (var i in script_arr) {
+            var script = document.createElement('script');
+            script.src = script_arr[i];
+            (function (j) {
+                document.body.appendChild(script);
+                script.onload = function () {
+                    start++;
+                    if (start == nums) {
+                        console.log('全部加载完成');
+                    }
+                    document.getElementById('loading').style.width = (start / nums) * 100 + '%';
+                };
+                script.onerror = function () {
+                    start++;
+                    console.log(srcript_arr[j] + '失败');
+                    document.getElementById('loading').style.width = (start / nums) * 100 + '%';
+                }
+            })(i);
+
+        }
+
+    </script>
+
 </body>
 
 </html>
