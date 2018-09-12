@@ -5,29 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-loading-bar.css">
+    <script src="./pace-master/pace.js"></script>
+    <!-- 以下是样式文件、可以挑选喜欢的 -->
+    <!-- good -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-loading-bar.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-material.css"> -->
+    <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-center-atom.css">
+    <!-- good -->
+
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-big-counter.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-barber-shop.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-bounce.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-center-circle.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-center-radar.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-center-simple.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-corner-indicator.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-fill-left.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-flash.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/black/pace-theme-flat-top.css"> -->
+    <!-- <link rel="stylesheet" href="./pace-master/themes/yellow/pace-theme-center-atom.css"> -->
+
     <title>Document</title>
     <style>
-        .progress {
-            height: 5px;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 100%;
+            opacity: 0;
+            transition: opacity .3s;
         }
     </style>
-    <script src="./pace-master/pace.js"></script>
     <script>
-        paceOptions = {
-            document: false,
-            // Disable the 'elements' source
-            // elements: ['.progress'],
-
-            // Only show the progress on regular and ajax-y page navigation,
-            // not every request
-            restartOnRequestAfter: false
-        }
+        // 以下是一些基础api
+        Pace.on('start', function () {
+            console.log('start');
+        });
+        Pace.on('stop', function () {
+            console.log('stop');
+        });
+        Pace.on('done', function () {
+            console.log('done');
+        });
+        // Pace.on('done', function () {
+        //     console.log('done');
+        // });
     </script>
 </head>
 
 <body>
     <div class="progress"></div>
+
+    <div class="main">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753927894&di=419161d2522add5610ffcb522b3b71b7&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1302%2F25%2Fc0%2F18396687_1361773020998.jpg">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955514&di=53c3d093f3f545cd6bd1c875eb7da7ea&imgtype=0&src=http%3A%2F%2Fold.bz55.com%2Fuploads%2Fallimg%2F141222%2F140-141222115144.jpg">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955514&di=398df2095e93cf13d21ac1858647c432&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1307%2F10%2Fc2%2F23152238_1373425419542.jpg">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955512&di=608bf27a2b974a9b5cf4786c525b3ba2&imgtype=0&src=http%3A%2F%2Fwww.wallcoo.com%2Fsport%2FNBA_Minnesota_Timberwolves%2Fwallpapers%2F1680x1050%2Fgen_calm.jpg">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955510&di=cdd4c3fea26ca89f4228a92682154ecf&imgtype=0&src=http%3A%2F%2Fi2.img.969g.com%2Fnba2k%2Fimgx2012%2F10%2F16%2F128_111747_6e942.jpg">
+    </div>
+
 </body>
 
 </html>
+<script>
+    var imgs = document.querySelectorAll("img");
+    Pace.on('hide', function () {
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].style.opacity = 1;
+            console.log('第' + i + '张图片加载完毕');
+        }
+    });
+</script>
