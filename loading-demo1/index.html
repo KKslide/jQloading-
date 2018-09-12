@@ -1,26 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/index.css">
-    <title>Loading-Demo</title>
+    <title>Loading</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        .loading-box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #000;
+        }
+
+        .loading-box.loaded {
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        #load {
+            position: absolute;
+            width: 600px;
+            height: 36px;
+            left: 50%;
+            top: 40%;
+            margin-left: -300px;
+            overflow: visible;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+
+        #load div {
+            position: absolute;
+            width: 20px;
+            height: 36px;
+            opacity: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            animation: move 2s linear infinite;
+            -o-animation: move 2s linear infinite;
+            -moz-animation: move 2s linear infinite;
+            -webkit-animation: move 2s linear infinite;
+            transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            color: #35C4F0;
+        }
+
+        #load div:nth-child(2) {
+            animation-delay: 0.2s;
+            -o-animation-delay: 0.2s;
+            -moz-animation-delay: 0.2s;
+            -webkit-animation-delay: 0.2s;
+        }
+
+        #load div:nth-child(3) {
+            animation-delay: 0.4s;
+            -o-animation-delay: 0.4s;
+            -webkit-animation-delay: 0.4s;
+            -webkit-animation-delay: 0.4s;
+        }
+
+        #load div:nth-child(4) {
+            animation-delay: 0.6s;
+            -o-animation-delay: 0.6s;
+            -moz-animation-delay: 0.6s;
+            -webkit-animation-delay: 0.6s;
+        }
+
+        #load div:nth-child(5) {
+            animation-delay: 0.8s;
+            -o-animation-delay: 0.8s;
+            -moz-animation-delay: 0.8s;
+            -webkit-animation-delay: 0.8s;
+        }
+
+        #load div:nth-child(6) {
+            animation-delay: 1s;
+            -o-animation-delay: 1s;
+            -moz-animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+        }
+
+        #load div:nth-child(7) {
+            animation-delay: 1.2s;
+            -o-animation-delay: 1.2s;
+            -moz-animation-delay: 1.2s;
+            -webkit-animation-delay: 1.2s;
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -moz-transform: rotate(-180deg);
+                -webkit-transform: rotate(-180deg);
+                -o-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -moz-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -o-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+    </style>
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <a href="http://www.appgame.com">inOne</a>
-    <h1 style="margin-top: 50px;"></h1>
-    <h1 style="margin-top: 50px;"></h1>
-    <h1 style="margin-top: 50px;"></h1>
-    <button id="reload">Reload</button>
-    <script src="./index.js"></script>
-    <script>
-        document.getElementById('reload').addEventListener('click',function () {
-            location.reload();
-        },false);
-    </script>
+
+    <div class="loading-box">
+        <div id="load">
+            <div>G</div>
+            <div>N</div>
+            <div>I</div>
+            <div>D</div>
+            <div>A</div>
+            <div>O</div>
+            <div>L</div>
+        </div>
+    </div>
+
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753927894&di=419161d2522add5610ffcb522b3b71b7&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1302%2F25%2Fc0%2F18396687_1361773020998.jpg">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955514&di=53c3d093f3f545cd6bd1c875eb7da7ea&imgtype=0&src=http%3A%2F%2Fold.bz55.com%2Fuploads%2Fallimg%2F141222%2F140-141222115144.jpg">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955514&di=398df2095e93cf13d21ac1858647c432&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1307%2F10%2Fc2%2F23152238_1373425419542.jpg">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955512&di=608bf27a2b974a9b5cf4786c525b3ba2&imgtype=0&src=http%3A%2F%2Fwww.wallcoo.com%2Fsport%2FNBA_Minnesota_Timberwolves%2Fwallpapers%2F1680x1050%2Fgen_calm.jpg">
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536753955510&di=cdd4c3fea26ca89f4228a92682154ecf&imgtype=0&src=http%3A%2F%2Fi2.img.969g.com%2Fnba2k%2Fimgx2012%2F10%2F16%2F128_111747_6e942.jpg">
+
 </body>
 
 </html>
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState == 'complete') {
+            document.querySelector(".loading-box").classList.add('loaded');
+        }
+    }
+</script>
